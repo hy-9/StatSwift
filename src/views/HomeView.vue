@@ -4,6 +4,7 @@ import type { Stat } from "@/type/Stat";
 import StatTable from "@/components/StatTable.vue";
 import ClipboardInput from "@/components/ClipboardInput.vue";
 import type { AddResultType } from "@/type/AddResultType";
+import StatsCharts from "@/components/StatsCharts.vue";
 
 const dataList = ref<Array<Stat>>([]);
 function addDataList(payload: string) {
@@ -48,9 +49,10 @@ function deleteStat(stat: Stat) {
 <template>
 	<div>
 		<ClipboardInput :addDataList="addDataList" />
-		<div class="mt-4 flex">
+		<div class="mt-4 flex overflow-x-auto">
 			<StatTable :tableData="dataList" :deleteStat="deleteStat" />
-			<StatsCharts />
+			<div></div>
+			<StatsCharts :chartData="dataList" />
 		</div>
 	</div>
 </template>

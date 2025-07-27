@@ -30,7 +30,14 @@ function clickDeleteStatBt(which: Stat) {
 </script>
 
 <template>
-	<el-table :data="tableData" border :fit="false" show-summary flexible>
+	<el-table
+		:data="tableData"
+		border
+		:fit="false"
+		show-summary
+		flexible
+		class="w-1/2"
+	>
 		<el-table-column
 			v-for="(option, index) in tableOptions"
 			:key="index"
