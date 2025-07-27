@@ -5,9 +5,9 @@ console.log(import.meta.env);
 </script>
 
 <template>
-  <div class="h-lvh w-lvw">
-    <RouterView />
-  </div>
+	<div class="h-lvh w-lvw">
+		<RouterView />
+	</div>
 </template>
 
 <style scoped></style>
