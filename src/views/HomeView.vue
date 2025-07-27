@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ClipboardInput from "@/components/ClipboardInput.vue";
-
+import StatsCharts from "@/components/StatsCharts.vue";
 function addDataList() {
   return {
     result: false,
@@ -12,6 +12,7 @@ function addDataList() {
 <template>
   <div>
     <ClipboardInput :addDataList="addDataList" />
+    <StatsCharts />
   </div>
 </template>
 <style></style>
