@@ -50,6 +50,7 @@ function deleteStat(stat: Stat) {
 		<ClipboardInput :addDataList="addDataList" />
 		<div class="mt-4 flex">
 			<StatTable :tableData="dataList" :deleteStat="deleteStat" />
+			<StatsCharts />
 		</div>
 	</div>
 </template>
