@@ -10,6 +10,7 @@
 import { computed, onMounted, ref, watch } from "vue";
 import * as echarts from "echarts";
 import type { ChartType, Stat } from "@/type/Stat";
+import { utils, writeFileXLSX } from "xlsx";
 type EChartsOption = echarts.EChartsOption;
 
 const props = defineProps<{ chartData: Array<Stat> }>();
@@ -67,6 +68,14 @@ function rendererChart() {
           icon: "path://M512 752.16a32 32 0 0 1-32-32V350.624a32 32 0 0 1 64 0v369.536a32 32 0 0 1-32 32zM320 752.576a32 32 0 0 1-32-32V512a32 32 0 0 1 64 0v208.576a32 32 0 0 1-32 32zM896 752.672a32 32 0 0 1-32-32V163.488a32 32 0 1 1 64 0v557.184a32 32 0 0 1-32 32zM704 752.736a32 32 0 0 1-32-32V224a32 32 0 1 1 64 0v496.736a32 32 0 0 1-32 32z",
           onclick: function () {
             chartType.value = "bar";
+          },
+        },
+        myToolExportExcel: {
+          show: true,
+          title: "导出为表格",
+          icon: "path://M96 160v704h832V160H96z m309.344 400.192v-160h192v160h-192z m192 64V800h-192v-175.808h192zM160 400.192h181.344v160H160v-160z m501.344 0H864v160h-202.656v-160zM864 224v112.192H160V224h704zM160 624.192h181.344V800H160v-175.808zM661.344 800v-175.808H864V800h-202.656z",
+          onclick: function () {
+            exportFile();
           },
         },
         saveAsImage: {},
@@ -131,6 +140,19 @@ onMounted(() => {
   myChart = echarts.init(containerRef.value);
   rendererChart();
 });
+// 导出为excel
+function exportFile() {
+  /* generate worksheet from state */
+  const sheetData = chartData.map((item) => {
+    return { 名称: item.name, 次数: item.value };
+  });
+  const ws = utils.json_to_sheet(sheetData);
+  /* create workbook and append worksheet */
+  const wb = utils.book_new();
+  utils.book_append_sheet(wb, ws, "Data");
+  /* export to XLSX */
+  writeFileXLSX(wb, "统计数据.xlsx");
+}
 </script>
 
 <style scoped></style>
