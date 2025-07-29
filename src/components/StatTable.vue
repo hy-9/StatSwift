@@ -11,7 +11,6 @@ const props = withDefaults(
 		deleteStat: () => () => false,
 	},
 );
-
 const tableOptions = [
 	{ label: "序号", prop: "index" },
 	{ label: "名称", prop: "name" },

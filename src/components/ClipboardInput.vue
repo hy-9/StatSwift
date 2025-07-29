@@ -5,6 +5,7 @@
 			style="max-width: 240px"
 			placeholder="请输入内容"
 			ref="inputRef"
+			@keydown.enter.native="handleClipboard"
 		/>
 		<el-button type="primary" ref="buttonRef" @click="handleCommitButton"
 			>提交</el-button
@@ -65,11 +66,11 @@ window.addEventListener("focus", async () => {
 	console.log();
 });
 //键盘事件
-window.addEventListener("keydown", (event) => {
-	if (event.key == "Enter") {
-		handleClipboard();
-	}
-});
+// window.addEventListener("keydown", (event) => {
+// 	if (event.key == "Enter") {
+// 		handleClipboard();
+// 	}
+// });
 //提交按钮
 function handleCommitButton() {
 	handleClipboard();
