@@ -9,11 +9,6 @@ const router = createRouter({
 			name: "home",
 			component: HomeView,
 		},
-		{
-			path: "/chart",
-			name: "chart",
-			component: () => import("../views/ChartView.vue"),
-		},
 	],
 });
 
